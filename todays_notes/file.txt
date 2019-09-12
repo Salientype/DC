@@ -1,0 +1,2 @@
+mv -- moves file into a dir or renames a file
+cp -- copies file into a dir or copies contents into another file
