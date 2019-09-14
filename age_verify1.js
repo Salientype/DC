@@ -50,47 +50,51 @@ var bobAge = 19;
 var henryAge = 22;
 var katieAge = 9;
 
+var arrayOfResults = [];
 
-// run checks on all conitions (pass in name and age per person)
+
+// run checks on all conditions (pass in name and age per person)
 
 function checkAgeCond( name, age ) {
 	
 	// check driving age of person	
 
 	if ( checkDrvAge( age ) == true ) {
-		console.log( name + " can drive!" );
+		arrayOfResults.push( name + " can drive!" );
 	} else {
-		console.log( name + " cannot drive! ");
+		arrayOfResults.push( name + " cannot drive! ");
 	}
 
 	// check drinking age
 
 	if ( checkDrkAge( age ) == true ) {
-		console.log( name + " can drink!");
+		arrayOfResults.push( name + " can drink!");
 	} else {
-		console.log( name + " cannot drink!");
+		arrayOfResults.push( name + " cannot drink!");
 	}
 
 	// check car rental age
 
 	if ( checkRntAge( age ) == true) {
-		console.log( name + " can rent a car!");
+		arrayOfResults.push( name + " can rent a car!");
 	} else {
-		console.log( name + " cannot rent a car!");
+		arrayOfResults.push( name + " cannot rent a car!");
 	}
 
 	// check ball pit age
 
 	if ( checkBalPit( age ) == true) {
-		console.log( name + " can enter the ball pit!");
+		arrayOfResults.push( name + " can enter the ball pit!");
 	} else {
-		console.log( name + " is too old for the ballpit!");
+		arrayOfResults.push( name + " is too old for the ballpit!");
 	}
 	
 }
 
-console.log( checkAgeCond ("Sarah", sarahAge) );
-console.log( checkAgeCond ("Bob", bobAge) );
-console.log( checkAgeCond ("Henry", henryAge) );
-console.log( checkAgeCond ("Katie", katieAge) );
+checkAgeCond ( "Sarah", sarahAge );
+checkAgeCond ( "Bob", bobAge );
+checkAgeCond ( "Henry", henryAge );
+checkAgeCond ( "Katie", katieAge );
+
+console.log( arrayOfResults );
 
