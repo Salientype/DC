@@ -62,31 +62,31 @@ function checkAgeCond( name, age ) {
 	if ( checkDrvAge( age ) == true ) {
 		arrayOfResults.push( name + " can drive!" );
 	} else {
-		arrayOfResults.push( name + " cannot drive! ");
+		arrayOfResults.push( name + " cannot drive! " );
 	}
 
 	// check drinking age
 
 	if ( checkDrkAge( age ) == true ) {
-		arrayOfResults.push( name + " can drink!");
+		arrayOfResults.push( name + " can drink!" );
 	} else {
-		arrayOfResults.push( name + " cannot drink!");
+		arrayOfResults.push( name + " cannot drink!" );
 	}
 
 	// check car rental age
 
-	if ( checkRntAge( age ) == true) {
-		arrayOfResults.push( name + " can rent a car!");
+	if ( checkRntAge( age ) == true ) {
+		arrayOfResults.push( name + " can rent a car!" );
 	} else {
-		arrayOfResults.push( name + " cannot rent a car!");
+		arrayOfResults.push( name + " cannot rent a car!" );
 	}
 
 	// check ball pit age
 
-	if ( checkBalPit( age ) == true) {
-		arrayOfResults.push( name + " can enter the ball pit!");
+	if ( checkBalPit( age ) == true ) {
+		arrayOfResults.push( name + " can enter the ball pit!" );
 	} else {
-		arrayOfResults.push( name + " is too old for the ballpit!");
+		arrayOfResults.push( name + " is too old for the ballpit!" );
 	}
 	
 }
