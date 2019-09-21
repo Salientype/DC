@@ -1,5 +1,6 @@
-// Step 1) Points Calculator
-//
+/// Part 1 ///
+
+
 // Design a away for calculating the amount of points the waiter has earned. Each of the following activities will score the waiter/waitress a 1 point each:
 // Did the waiter greet you?
 // Did they bring bread/water to start?
@@ -9,82 +10,88 @@
 
 
 var waiterGreet = "yes";
-var bringBread = "no";
-var checkRefill = "no";
-var foodOk = "yes";
-var promptCheck = "no";
+var bringBread = "yes";
+var checkRefill = "yes";
+var foodOk = "no";
+var promptCheck = "yes";
 
-totalPoints = 0;
+var totalPoints = 0;
 
-function addUpPoints( waiterGreet=waiterGreet, bringBread=bringBread, checkRefill=checkRefill, foodOk=foodOk, promptCheck=promptCheck) {
+function addUpPoints( waiterGreet, bringBread, checkRefill, foodOk, promptCheck ) {
 
-	if ( waiterGreet == "yes" ) {
-	     
-		totalPoints++;
-	}
-	
-	if ( bringBread == "yes" ) {
+	if( waiterGreet == "yes" ) {
 
 		totalPoints++;
 	}
 
-	if ( checkRefill == "yes" ) {
+	if( bringBread == "yes" ) {
 
 		totalPoints++;
+	}
 
-	if ( foodOk == "yes" ) {
-
-		totalPoints++;
-
-	if ( promptCheck = "yes" ) {
+	if( checkRefill == "yes" ) {
 
 		totalPoints++;
+	}
 
+	if( foodOk == "yes" ) {
+
+		totalPoints++;
+	}
+
+	if( promptCheck == "yes" ) {
+
+		totalPoints++;
 	}
 
 }
 
-addUpPoints();
+addUpPoints( waiterGreet, bringBread, checkRefill, foodOk, promptCheck );
 
-console.log( "total points for waiter service " + totalPonits);
-
-
-/// Part 2
+console.log( "total points for waiter service: " + totalPoints );
 
 
-var bill = 120;
+/// Part 2 ///
+
+
+// Calculate tip and total bill
+
+
+var bill = 122.25;
 
 var tip = 0;
 
-var tipPercent = function ( totalPoints=totalPoints, bill=bill ) {
+var tipPercent = function ( totalPoints, bill ) {
 
-	if ( totalPoints == 0 ) {
-		
-		tip = .01 * bill;
-	
+ 	if( totalPoints == 0 ) {
+
+		tip = 0.01 * bill;
+
 	} else if( totalPoints == 1 ) {
 
-		tip = .02 * bill;	
-	
+		tip = 0.02 * bill;
+
 	} else if( totalPoints == 2 ) {
-	
-		tip = .04 * bill; 	
+
+		tip = 0.04 * bill;
 
 	} else if( totalPoints == 3 ) {
 
-		tip = .07 * bill;
-	
+		tip = 0.07 * bill;
+
 	} else if( totalPoints == 4 ) {
 
-		tip = .10 * bill;
-	
+		tip = 0.10 * bill;
+
 	} else if( totalPoints == 5 ) {
 
-		tip = .15 * bill;
+		tip = 0.15 * bill;
 	}
 
 }
 
-console.log("you should tip waiter: " + tip);
-console.log("your total bill should be: " +  ( bill + tip );
 
+tipPercent( totalPoints, bill );
+
+console.log( "you should tip waiter: " + tip.toFixed( 2 ) );
+console.log( "your total bill should be: " +  ( bill + tip ).toFixed( 2 ) );
