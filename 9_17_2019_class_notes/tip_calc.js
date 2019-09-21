@@ -21,7 +21,6 @@ function addUpPoints( waiterGreet=waiterGreet, bringBread=bringBread, checkRefil
 	if ( waiterGreet == "yes" ) {
 	     
 		totalPoints++;
-
 	}
 	
 	if ( bringBread == "yes" ) {
@@ -87,3 +86,5 @@ var tipPercent = function ( totalPoints=totalPoints, bill=bill ) {
 }
 
 console.log("you should tip waiter: " + tip);
+console.log("your total bill should be: " +  ( bill + tip );
+
