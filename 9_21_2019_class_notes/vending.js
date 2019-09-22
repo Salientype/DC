@@ -33,29 +33,44 @@ Your task is to create a simulation in which 5 different buyers attempt to buy a
 - Objects
 - Functions
 
+1. You will be running this against 5 different people that enter different amounts and want different items. Your code MUST be re-usable.
+
+2. The amount tendered should be stored. This is important because the amount tendered is going to:
+     - Going to be compared against the cost of the item to determine if the item can be purchased
+     - Going return the different between the amount tendered vs cost of the item
+     -  Reset for each new person
+
+3. Take everything ONE STEP AT A TIME.
+
 With a partner, please discuss the problem by laying each piece of the problem 1 step at a time, and work your way through the problem.
 
 */
 
-var snacks = [ 
-                
-                { name : "Snickers", price : 1.25 },
-                { name : "Popcorn", price : 1.00 },
-                { name : "Chewing Gum", price : 0.25 },
-                { name : "Nuts", price : 0.50 },
-                { name : "Cookies", price : 1.70 },
-                { name : "Cup Noodles", price : 2.25 }
-
+var snacks = [                 
+                    { name : "Snickers", price : 1.25 },
+                    { name : "Popcorn", price : 1.00 },
+                    { name : "Chewing Gum", price : 0.30 },
+                    { name : "Nuts", price : 0.50 },
+                    { name : "Cookies", price : 1.70 },
+                    { name : "Cup Noodles", price : 2.25 }
              ];
 
-var money = {
-                nickle : 0.05,
-                dime : 0.10,
-                quarter : 0.25,
-                dollar : 1.00
+var money = { 
+                    nickle : 0.05,
+                    dime : 0.10,
+                    quarter : 0.25,
+                    dollar : 1.00
             };
 
-var moneyInserted = [ money.dollar * 2, money.quarter, money.dime ];
+
+var userData = [
+                    { name : Joe, money : money.dollar , item : "Nuts" },
+                    { name : Alice, money : ( money.quarter * 3 ) + ( money.dime * 2 ), item : "Cookies" },
+                    { name : Jane, money : money.dollar * 3, item : "Cup Noodles" },
+                    { name : Fred, money : money.dime * 2, item : "Chewing Gum" },
+                    { name : Henry, money : money.dollar + ( money.quarter * 2 ), item : "Snickers" }
+               ]
+
 
 totalUserMoney = 0;
 
@@ -85,7 +100,7 @@ function selectedItem ( moneyInserted, snackChosen ) {
 
     for ( var i = 0; i < snacks.length; i++ ) {
 
-        if ( snacks[ i ].name == snackChosen) {
+        if ( snacks[ i ].name == snackChosen ) {
 
             noSnackFound = 1;
 
