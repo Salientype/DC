@@ -64,81 +64,78 @@ var money = {
 
 
 var userData = [
-                    { name : Joe, money : money.dollar , item : "Nuts" },
-                    { name : Alice, money : ( money.quarter * 3 ) + ( money.dime * 2 ), item : "Cookies" },
-                    { name : Jane, money : money.dollar * 3, item : "Cup Noodles" },
-                    { name : Fred, money : money.dime * 2, item : "Chewing Gum" },
-                    { name : Henry, money : money.dollar + ( money.quarter * 2 ), item : "Snickers" }
-               ]
+                    { name : "Joe", money : money.dollar, item : "Nuts" },
+                    { name : "Alice", money : ( money.quarter * 3 ) + ( money.dime * 2 ), item : "Cookies" },
+                    { name : "Jane", money : money.dollar * 3, item : "Cup Noodles" },
+                    { name : "Fred", money : money.dime * 2, item : "Chewing Gum" },
+                    { name : "Henry", money : money.dollar + ( money.quarter * 2 ), item : "Snickers" },
+                    { name : "Frodo", money : money.dollar, item : "Beer" }
+               ];
 
-
-totalUserMoney = 0;
-
-function calcMoneyInserted( moneyInserted ) {
-
-    for ( var i = 0; i < moneyInserted.length; i++ ) {
-
-        totalUserMoney += moneyInserted[i];
-
-    }
-
-}
 
 function displaySnacks ( snacks ) {
 
     for ( var i = 0; i < snacks.length; i++ ) {
 
-        console.log( snacks[ i ].name + ": " + snacks[ i ].price );
+        console.log( snacks[ i ].name + ": $" + ( snacks[ i ].price ).toFixed( 2 ) );
 
     }
 
 }
 
-function selectedItem ( moneyInserted, snackChosen ) {
+function vendItems( userData ) {
+
+    for ( var i = 0; i < userData.length; i++ ) {
+
+        var noSnackFound = 0;
+        var snackChosen = '';
+
+        for ( var j = 0; j < snacks.length; j++ ) {
     
-    var noSnackFound = 0;
+            if ( snacks[ j ].name == userData[ i ].item ) {
+    
+                noSnackFound = 1;
+                snackChosen = userData[ i ].item;
+    
+                var price = snacks[ j ].price;
+                var user = userData[ i ].name;
+                var moneyInserted = userData[ i ].money;
+                
+                // print error message if not enough money inserted
+                
+                if ( moneyInserted < price  ) {
+    
+                    console.log( user + " has not inserted enough money." );
+    
+                } 
+    
+                // print item and left over change according to money inserted
+    
+                if ( moneyInserted >= price ) {
+                 
+                    // To Do
+                    console.log( "Thanks " + user + ", for your purchase! Your change is: $" + ( moneyInserted - price ).toFixed( 2 ) );
 
-    for ( var i = 0; i < snacks.length; i++ ) {
-
-        if ( snacks[ i ].name == snackChosen ) {
-
-            noSnackFound = 1;
-
-            var price = snacks[ i ].price;
-
-            // print error message if not enough money inserted
-            
-            if ( price > moneyInserted ) {
-
-                console.log( "Not enough money has been inseted!" );
-
-            } 
-
-            // print item and left over change according to money inserted
-
-            if ( price <= moneyInserted ) {
-             
-                // To Do
-                console.log( "Thanks for your purchase your change is: " + ( moneyInserted - price ).toFixed( 2 ) );
-
-
+    
+                }
+    
             }
-
+    
+        }
+        
+        if ( snackChosen == null || noSnackFound == 0 ) {
+    
+            // return change
+            console.log ( "No item was selected." );
+    
         }
 
     }
 
-    if ( snackChosen == null || noSnackFound == 0 ) {
-
-        // return change
-        console.log ( "No item was selected" );
-
-    }
-    
 }
 
 
 console.log( "#############################");
-displaySnacks ( snacks );
+displaySnacks( snacks );
 console.log( "#############################");
-selectedItem ( 20, "Popcorn" );
+vendItems( userData );
