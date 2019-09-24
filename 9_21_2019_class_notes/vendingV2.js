@@ -158,7 +158,7 @@ function vendItems( userData ) {
             var user = userData[ i ].name;
             var refund = countMoney( userData[ i ].money );
             
-            console.log ( "No valid item was selected, " + ( refund ).toFixed( 2 ) + " has been returned to " + user + "." );
+            console.log ( "No valid item was selected, $" + ( refund ).toFixed( 2 ) + " has been returned to " + user + "." );
     
         }
 
