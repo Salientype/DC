@@ -1,0 +1,28 @@
+h1 {
+    color: orangered;
+}
+
+body {
+    background-color: blanchedalmond;
+}
+
+.list {
+    color: darkblue;
+    padding-left: 480px;
+}
+
+.container {
+    width: 900px;
+    margin: auto;
+}
+
+.subhead {
+    text-transform: uppercase;
+    color: brown;
+}
+
+h2 + img {
+    border: 2px solid black;
+    float: left;
+    margin-right: 40px;
+}
