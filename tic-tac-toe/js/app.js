@@ -51,14 +51,14 @@ var boardData = [];
 var currentPlayer = "player1";
 
 //Creates The Board
-var makeBoard = function() {
-    
+var makeBoard = function () {
+
     //The Row
-    for(var row =0; row<3; row++) {
+    for (var row = 0; row < 3; row++) {
 
         //Create row html element
         var rowElement = document.createElement("div");
-        rowElement.className="row"
+        rowElement.className = "row"
 
         //Start making the multidimensional array.
         //The row is the first array which then
@@ -66,29 +66,29 @@ var makeBoard = function() {
         boardData[row] = [];
 
         //Create The Columns that will go into the rows
-        for(var column=0; column<3; column++) {
+        for (var column = 0; column < 3; column++) {
 
             //Create a column element
             var columnElement = document.createElement("div");
             //Assign a class to the column element
-            columnElement.className ="col border border-secondary board-piece";
+            columnElement.className = "col border border-secondary board-piece";
             //Set Default text to the columnelment
             columnElement.innerHTML = "Row " + row + " Column " + column;
             //Set an id of the coordinates as the current row and column
-            columnElement.id= row + "-" + column;
+            columnElement.id = row + "-" + column;
 
             //Set the onclick for when a user clicks the column
-            columnElement.onclick = function() {
-                
+            columnElement.onclick = function () {
+
                 //Get the id assigned to the column
                 var idString = this.id;
                 //Split the id into an array of coordinations
                 var idArray = idString.split("-");
 
                 //Execute a click action
-                if(this.innerHTML == getXPiece() || this.innerHTML == getOPiece()){
+                if (this.innerHTML == getXPiece() || this.innerHTML == getOPiece()) {
                     alert("You cannot change this piece");
-                } else if(currentPlayer == "player1") {
+                } else if (currentPlayer == "player1") {
                     /**
                      * If the player is player 1, get the X piece
                      * and then switch to player 2
@@ -103,7 +103,7 @@ var makeBoard = function() {
                     checkWinVertical(idArray[0], idArray[1], getXPiece());
                     checkWinHorizantal(idArray[0], idArray[1], getXPiece());
                     checkWinDiagonal(idArray[0], idArray[1], getXPiece());
-                } else if(currentPlayer == "player2"){
+                } else if (currentPlayer == "player2") {
                     /**
                      * If the player is player 2, get the O piece
                      * and then switch to player 1
@@ -118,8 +118,8 @@ var makeBoard = function() {
                     checkWinHorizantal(idArray[0], idArray[1], getOPiece());
                     checkWinDiagonal(idArray[0], idArray[1], getOPiece());
                 }
-                
-            } 
+
+            }
 
             //Add the columnElement to the multidimensional array
             boardData[row][column] = columnElement;
@@ -134,142 +134,144 @@ var makeBoard = function() {
         boardElement.appendChild(rowElement);
 
     }
+
 }
 
 //Get the represenation of the X piece
-var getXPiece = function() {
+var getXPiece = function () {
     return "X";
 }
 
 //Get the representation of the O piece
-var getOPiece = function() {
+var getOPiece = function () {
     return "O";
 }
 
 //Check to see if a user has won vertically
-var checkWinVertical = function(row, column, piece) {
+var checkWinVertical = function (row, column, piece) {
     var points = 0;
 
-    if(boardData[row-2] && boardData[row-1][column] && boardData[row-2][column].innerHTML == piece) {
+    if (boardData[row - 2] && boardData[row - 1][column] && boardData[row - 2][column].innerHTML == piece) {
         points++;
     }
 
-    if(boardData[row-1] && boardData[row-1][column] && boardData[row-1][column].innerHTML == piece) {
+    if (boardData[row - 1] && boardData[row - 1][column] && boardData[row - 1][column].innerHTML == piece) {
         points++;
     }
 
-    if(boardData[row+1] && boardData[row+1][column] && boardData[row+1][column].innerHTML == piece) {
+    if (boardData[row + 1] && boardData[row + 1][column] && boardData[row + 1][column].innerHTML == piece) {
         points++;
     }
 
-    if(boardData[row+2] && boardData[row+1][column] && boardData[row+2][column].innerHTML == piece) {
+    if (boardData[row + 2] && boardData[row + 1][column] && boardData[row + 2][column].innerHTML == piece) {
         points++;
     }
 
-    if(points >= 2) {
+    if (points >= 2) {
         alert("You have won");
         var round = document.createElement("LI");
-        var squares = document.getElementsByClassName("board-piece");
-        if(piece == "X"){
+        if (piece == "X") {
             round.innerHTML = "Player 1 has won!";
             document.getElementById("winList").appendChild(round);
         }
-        
+
         if (piece == "O") {
             round.innerHTML = "Player 2 has won!";
             document.getElementById("winList").appendChild(round);
         }
-        
-        for(var i = 0; i < squares.length; i++) {
-            squares[i].innerHTML = "";
-        }
+
+        resetBoard();
 
     }
 
 }
 
 //Check to see if a user has won horizantally
-var checkWinHorizantal = function(row, column, piece) {
+var checkWinHorizantal = function (row, column, piece) {
     var points = 0;
 
-    if(boardData[row] && boardData[row][column-2] && boardData[row][column-2].innerHTML == piece) {
+    if (boardData[row] && boardData[row][column - 2] && boardData[row][column - 2].innerHTML == piece) {
         points++;
     }
 
-    if(boardData[row] && boardData[row][column-1] && boardData[row][column-1].innerHTML == piece) {
+    if (boardData[row] && boardData[row][column - 1] && boardData[row][column - 1].innerHTML == piece) {
         points++;
     }
 
-    if(boardData[row] && boardData[row][column+1] && boardData[row][column+1].innerHTML == piece) {
+    if (boardData[row] && boardData[row][column + 1] && boardData[row][column + 1].innerHTML == piece) {
         points++;
     }
 
-    if(boardData[row] && boardData[row][column+2] && boardData[row][column+2].innerHTML == piece) {
+    if (boardData[row] && boardData[row][column + 2] && boardData[row][column + 2].innerHTML == piece) {
         points++;
     }
 
-    if(points >= 2) {
+    if (points >= 2) {
         alert("You have won");
         var round = document.createElement("LI");
         var squares = document.getElementsByClassName("board-piece");
-        if(piece == "X"){
+        if (piece == "X") {
             round.innerHTML = "Player 1 has won!";
             document.getElementById("winList").appendChild(round);
         }
-        
+
         if (piece == "O") {
             round.innerHTML = "Player 2 has won!";
             document.getElementById("winList").appendChild(round);
         }
-        
-        for(var i = 0; i < squares.length; i++) {
-            squares[i].innerHTML = "";
-        }
+
+        resetBoard();
 
     }
 
 }
 
 //Check to see if a user has one on a diagonal
-var checkWinDiagonal = function(row, column, piece) {
+var checkWinDiagonal = function (row, column, piece) {
     var points = 0;
 
-    if(boardData[row-2] && boardData[row-2][column-2] && boardData[row-2][column-2].innerHTML == piece) {
+    if (boardData[row - 2] && boardData[row - 2][column - 2] && boardData[row - 2][column - 2].innerHTML == piece) {
         points++;
     }
 
-    if(boardData[row-1] && boardData[row-1][column-1] && boardData[row-1][column-1].innerHTML == piece) {
+    if (boardData[row + 2] && boardData[row + 2][column + 2] && boardData[row + 2][column + 2].innerHTML == piece) {
         points++;
     }
 
-    if(boardData[row+1] && boardData[row+1][column+1] && boardData[row+1][column+1].innerHTML == piece) {
+    if (boardData[row - 1] && boardData[row - 1][column - 1] && boardData[row + 1][column + 1] && boardData[row - 1][column - 1].innerHTML == piece) {
         points++;
     }
 
-    if(boardData[row+2] && boardData[row+2][column+2] && boardData[row+2][column+2].innerHTML == piece) {
+    if (boardData[row + 1] && boardData[row + 1][column + 1] && boardData[row - 1][column - 1] && boardData[row + 1][column + 1].innerHTML == piece) {
         points++;
     }
 
-    if(points >= 2) {
+    if (points >= 2) {
         alert("You have won");
         var round = document.createElement("LI");
         var squares = document.getElementsByClassName("board-piece");
-        if(piece == "X"){
+        if (piece == "X") {
             round.innerHTML = "Player 1 has won!";
             document.getElementById("winList").appendChild(round);
         }
-        
+
         if (piece == "O") {
             round.innerHTML = "Player 2 has won!";
             document.getElementById("winList").appendChild(round);
         }
-        
-        for(var i = 0; i < squares.length; i++) {
-            squares[i].innerHTML = "";
-        }
+
+        resetBoard();
 
     }
 
+}
+
+var resetBoard = function () {
+    var squares = document.getElementsByClassName("board-piece");
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].innerHTML = "";
+    }
+    currentPlayer = "player1";
 }
 
 //Call the function that makes the grid
