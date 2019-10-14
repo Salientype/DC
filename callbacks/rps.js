@@ -1,4 +1,5 @@
 var countdown = function () {
+
     var num = 4;
     var timer = document.getElementById("countdown");
     var setTimer = setInterval(function () {
@@ -9,35 +10,18 @@ var countdown = function () {
             startGame();
         }
     }, 1000);
+
 }
 
 
 var startGame = function () {
+
     console.log(playerSelect());
     console.log(machineSelect());
+
 }
 
-var playerSelect = function () {
-
-    var choice = document.querySelector('input[name="playerChoice"]:checked').value;
-
-    if (choice == "rock") {
-        // display rock in div
-        return choice;
-    } else if (choice == "paper") {
-        // display paper in div
-        return choice;
-    } else if (choice == "scissors") {
-        // display scissors in div
-        return choice;
-    } else {
-        reset();
-    }
-}
-
-var machineSelect = function () {
-
-    var choice = Math.floor((Math.random() * 3) + 1);
+var returnSelection = function (choice) {
 
     if (choice == 1) {
         // display rock in div
@@ -51,6 +35,21 @@ var machineSelect = function () {
     } else {
         reset();
     }
+
+}
+
+var playerSelect = function () {
+
+    var choice = document.querySelector('input[name="playerChoice"]:checked').value;
+    return returnSelection(choice);
+
+}
+
+var machineSelect = function () {
+
+    var choice = Math.floor((Math.random() * 3) + 1);
+    return returnSelection(choice);
+
 }
 
 var evalMatch = function () {
