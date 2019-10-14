@@ -16,8 +16,9 @@ var countdown = function () {
 
 var startGame = function () {
 
-    console.log(playerSelect());
-    console.log(machineSelect());
+    var playerChoice = playerSelect();
+    var machineChoice = machineSelect();
+    evalMatch(playerChoice, machineChoice);
 
 }
 
@@ -27,7 +28,7 @@ var returnSelection = function (player, choice) {
 
     if (choice == 1) {
         // display rock in div
-        graphicBox.innerHTML = '<i class="fas fa-hand-rock fa-10x"></i>';         
+        graphicBox.innerHTML = '<i class="fas fa-hand-rock fa-10x"></i>';
         return "rock";
     } else if (choice == 2) {
         // display paper in div
@@ -57,7 +58,25 @@ var machineSelect = function () {
 
 }
 
-var evalMatch = function () {
+var evalMatch = function (playerChoice, machineChoice) {
+    
+    if (playerChoice == "rock" && machineChoice == "paper") {
+        console.log("machine wins!");
+    } else if (playerChoice == "paper" && machineChoice == "rock") {
+        console.log("human wins!");
+    } else if (playerChoice == "rock" && machineChoice == "scissors") { 
+        console.log("human wins!");
+    } else if (playerChoice == "scissors" && machineChoice == "rock") {
+        console.log("machine wins!");
+    } else if (playerChoice == "scissors" && machineChoice == "paper") {
+        console.log("human wins!");
+    } else if (playerChoice == "paper" && machineChoice == "scissors") {
+        console.log("machine wins!");
+    } else if (playerChoice == machineChoice) {
+        console.log("Tied Match!")
+    } else {
+        reset();
+    }
 
 }
 
