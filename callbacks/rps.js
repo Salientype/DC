@@ -65,42 +65,42 @@ var evalMatch = function (playerChoice, machineChoice) {
     
     var playerBox = document.getElementById("playerChoice");
     var machineBox = document.getElementById("machineChoice");
-    
-    if (playerChoice == "rock" && machineChoice == "paper") {
-        console.log("machine wins!");
-        clearIconColors();
-        machineBox.classList.add("text-success");
-        playerBox.classList.add("text-danger");
-    } else if (playerChoice == "paper" && machineChoice == "rock") {
-        console.log("human wins!");
+
+    var playerWins = function () {
+        console.log("Human Wins!");
         clearIconColors();
         machineBox.classList.add("text-danger");
         playerBox.classList.add("text-success");
-    } else if (playerChoice == "rock" && machineChoice == "scissors") { 
-        console.log("human wins!");
-        clearIconColors();
-        machineBox.classList.add("text-danger");
-        playerBox.classList.add("text-success");
-    } else if (playerChoice == "scissors" && machineChoice == "rock") {
-        console.log("machine wins!");
+    }
+
+    var machineWins = function () {
+        console.log("Machine Wins!");
         clearIconColors();
         machineBox.classList.add("text-success");
         playerBox.classList.add("text-danger");
-    } else if (playerChoice == "scissors" && machineChoice == "paper") {
-        console.log("human wins!");
-        clearIconColors();
-        machineBox.classList.add("text-danger");
-        playerBox.classList.add("text-success");
-    } else if (playerChoice == "paper" && machineChoice == "scissors") {
-        console.log("machine wins!");
-        clearIconColors();
-        machineBox.classList.add("text-success");
-        playerBox.classList.add("text-danger");
-    } else if (playerChoice == machineChoice) {
+    }
+
+    var tiedMatch = function () {
         console.log("Tied Match!");
         clearIconColors();
         machineBox.classList.add("text-warning");
         playerBox.classList.add("text-warning");
+    }
+    
+    if (playerChoice == "rock" && machineChoice == "paper") {
+        machineWins();
+    } else if (playerChoice == "paper" && machineChoice == "rock") {
+        playerWins();
+    } else if (playerChoice == "rock" && machineChoice == "scissors") { 
+        playerWins();
+    } else if (playerChoice == "scissors" && machineChoice == "rock") {
+        machineWins();
+    } else if (playerChoice == "scissors" && machineChoice == "paper") {
+        playerWins();
+    } else if (playerChoice == "paper" && machineChoice == "scissors") {
+        machineWins();
+    } else if (playerChoice == machineChoice) {
+        tiedMatch();
     } else {
         reset();
     }
