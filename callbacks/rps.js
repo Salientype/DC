@@ -163,13 +163,13 @@ var logMatch = function (player) {
 }
 
 var reset = function () {
-    
+
     var timer = document.getElementById("countdown");
     var iconBoxes = document.getElementsByClassName("icon-box");
     clearInterval(setTimer);
     radioButtonsDisable(false);
     timer.innerHTML = "";
-    
+
     for (var i = 0; i < iconBoxes.length; i++) {
         iconBoxes[i].innerHTML = "";
     }
