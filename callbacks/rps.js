@@ -1,7 +1,9 @@
 var countdown = function () {
-    
+
+    radioButtonsDisable(false);
     clearIconColors();
-    
+    setDefaultIcons();
+
     var num = 4;
     var timer = document.getElementById("countdown");
     var setTimer = setInterval(function () {
@@ -21,6 +23,7 @@ var startGame = function () {
 
     var playerChoice = playerSelect();
     var machineChoice = machineSelect();
+    radioButtonsDisable(true);
     evalMatch(playerChoice, machineChoice);
 
 }
@@ -62,7 +65,7 @@ var machineSelect = function () {
 }
 
 var evalMatch = function (playerChoice, machineChoice) {
-    
+
     var playerBox = document.getElementById("playerChoice");
     var machineBox = document.getElementById("machineChoice");
 
@@ -86,12 +89,12 @@ var evalMatch = function (playerChoice, machineChoice) {
         machineBox.classList.add("text-warning");
         playerBox.classList.add("text-warning");
     }
-    
+
     if (playerChoice == "rock" && machineChoice == "paper") {
         machineWins();
     } else if (playerChoice == "paper" && machineChoice == "rock") {
         playerWins();
-    } else if (playerChoice == "rock" && machineChoice == "scissors") { 
+    } else if (playerChoice == "rock" && machineChoice == "scissors") {
         playerWins();
     } else if (playerChoice == "scissors" && machineChoice == "rock") {
         machineWins();
@@ -108,15 +111,40 @@ var evalMatch = function (playerChoice, machineChoice) {
 }
 
 var clearIconColors = function () {
-    
+
     var iconBoxes = document.getElementsByClassName("icon-box");
 
-    for(var i = 0; i < iconBoxes.length; i++) {
+    for (var i = 0; i < iconBoxes.length; i++) {
         iconBoxes[i].classList.remove("text-success");
         iconBoxes[i].classList.remove("text-danger");
         iconBoxes[i].classList.remove("text-warning");
     }
 
+}
+
+var setDefaultIcons = function () {
+
+    var playerBox = document.getElementById("playerChoice");
+    var machineBox = document.getElementById("machineChoice");
+
+    playerBox.innerHTML = '<i class="fas fa-question fa-10x"></i>';
+    machineBox.innerHTML = '<i class="fas fa-comment-dots fa-10x"></i>';
+
+}
+
+var radioButtonsDisable = function (boolean) {  
+
+    document.getElementById("rock").disabled = boolean;
+    document.getElementById("paper").disabled = boolean;
+    document.getElementById("scissors").disabled = boolean;
+
+    document.getElementById("rockBtn").classList.remove("focus");
+    document.getElementById("paperBtn").classList.remove("focus");
+    document.getElementById("scissorsBtn").classList.remove("focus");
+
+    document.getElementById("rockBtn").classList.remove("active");
+    document.getElementById("paperBtn").classList.remove("active");
+    document.getElementById("scissorsBtn").classList.remove("active");
 
 }
 
