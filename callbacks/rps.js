@@ -74,6 +74,7 @@ var evalMatch = function (playerChoice, machineChoice) {
         clearIconColors();
         machineBox.classList.add("text-danger");
         playerBox.classList.add("text-success");
+        logMatch("The Human");
     }
 
     var machineWins = function () {
@@ -81,6 +82,7 @@ var evalMatch = function (playerChoice, machineChoice) {
         clearIconColors();
         machineBox.classList.add("text-success");
         playerBox.classList.add("text-danger");
+        logMatch("The Robot")
     }
 
     var tiedMatch = function () {
@@ -88,6 +90,7 @@ var evalMatch = function (playerChoice, machineChoice) {
         clearIconColors();
         machineBox.classList.add("text-warning");
         playerBox.classList.add("text-warning");
+        logMatch("No one");
     }
 
     if (playerChoice == "rock" && machineChoice == "paper") {
@@ -132,7 +135,7 @@ var setDefaultIcons = function () {
 
 }
 
-var radioButtonsDisable = function (boolean) {  
+var radioButtonsDisable = function (boolean) {
 
     document.getElementById("rock").disabled = boolean;
     document.getElementById("paper").disabled = boolean;
@@ -148,8 +151,12 @@ var radioButtonsDisable = function (boolean) {
 
 }
 
-var logMatch = function () {
-
+var logMatch = function (player) {
+    
+    var historyList = document.getElementById("historyList");
+    var round = document.createElement("LI");
+    round.innerHTML = player + " has won!"
+    historyList.appendChild(round);
 }
 
 var reset = function () {
