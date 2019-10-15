@@ -1,3 +1,5 @@
+var setTimer;
+
 var countdown = function () {
 
     radioButtonsDisable(false);
@@ -6,7 +8,7 @@ var countdown = function () {
 
     var num = 4;
     var timer = document.getElementById("countdown");
-    var setTimer = setInterval(function () {
+    setTimer = setInterval(function () {
         timer.innerHTML = num;
         num--;
         if (num == -1) {
@@ -152,13 +154,24 @@ var radioButtonsDisable = function (boolean) {
 }
 
 var logMatch = function (player) {
-    
+
     var historyList = document.getElementById("historyList");
     var round = document.createElement("LI");
     round.innerHTML = player + " has won!"
     historyList.appendChild(round);
+
 }
 
 var reset = function () {
+    
+    var timer = document.getElementById("countdown");
+    var iconBoxes = document.getElementsByClassName("icon-box");
+    clearInterval(setTimer);
+    radioButtonsDisable(false);
+    timer.innerHTML = "";
+    
+    for (var i = 0; i < iconBoxes.length; i++) {
+        iconBoxes[i].innerHTML = "";
+    }
 
 }
