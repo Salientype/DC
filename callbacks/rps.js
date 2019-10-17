@@ -14,8 +14,12 @@ var countdown = function () {
         num--;
         if (num == -1) {
             clearInterval(setTimer);
-            startGame();
-            timer.innerHTML = "";
+            if (document.querySelector('input[name="playerChoice"]:checked')) {
+                startGame();
+                timer.innerHTML = "";
+            } else {
+                reset();
+            }
         }
     }, 1000);
 
