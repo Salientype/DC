@@ -8,6 +8,7 @@ var countdown = function () {
 
     var num = 4;
     var timer = document.getElementById("countdown");
+
     setTimer = setInterval(function () {
         timer.innerHTML = num;
         num--;
@@ -131,7 +132,6 @@ var setDefaultIcons = function () {
 
     var playerBox = document.getElementById("playerChoice");
     var machineBox = document.getElementById("machineChoice");
-
     playerBox.innerHTML = '<i class="fas fa-question fa-10x"></i>';
     machineBox.innerHTML = '<i class="fas fa-comment-dots fa-10x"></i>';
 
@@ -139,17 +139,24 @@ var setDefaultIcons = function () {
 
 var radioButtonsDisable = function (boolean) {
 
-    document.getElementById("rock").disabled = boolean;
-    document.getElementById("paper").disabled = boolean;
-    document.getElementById("scissors").disabled = boolean;
+    var rockBtnInput = document.getElementById("rock");
+    var paperBtnInput = document.getElementById("paper");
+    var scissorsBtnInput = document.getElementById("scissors");
+    var rockBtn = document.getElementById("rockBtn");
+    var paperBtn = document.getElementById("paperBtn");
+    var scissorsBtn = document.getElementById("scissorsBtn");
 
-    document.getElementById("rockBtn").classList.remove("focus");
-    document.getElementById("paperBtn").classList.remove("focus");
-    document.getElementById("scissorsBtn").classList.remove("focus");
+    rockBtnInput.disabled = boolean;
+    paperBtnInput.disabled = boolean;
+    scissorsBtnInput.disabled = boolean;
 
-    document.getElementById("rockBtn").classList.remove("active");
-    document.getElementById("paperBtn").classList.remove("active");
-    document.getElementById("scissorsBtn").classList.remove("active");
+    rockBtn.classList.remove("focus");
+    paperBtn.classList.remove("focus");
+    scissorsBtn.classList.remove("focus");
+
+    rockBtn.classList.remove("active");
+    paperBtn.classList.remove("active");
+    scissorsBtn.classList.remove("active");
 
 }
 
@@ -157,6 +164,7 @@ var logMatch = function (player) {
 
     var historyList = document.getElementById("historyList");
     var round = document.createElement("LI");
+    
     round.innerHTML = player + " has won!"
     historyList.appendChild(round);
 
@@ -164,8 +172,9 @@ var logMatch = function (player) {
 
 var reset = function () {
 
-    var timer = document.getElementById("countdown");
     var iconBoxes = document.getElementsByClassName("icon-box");
+    var timer = document.getElementById("countdown");
+
     clearInterval(setTimer);
     radioButtonsDisable(false);
     timer.innerHTML = "";
