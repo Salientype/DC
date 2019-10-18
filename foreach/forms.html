@@ -1,0 +1,96 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+    
+    <div id="container">
+
+    </div>
+
+    </body>
+    <script type="text/javascript">
+
+        /**
+        * Below we are going to create different type of form elements in html. To start, please
+        * read the following information on each form element:
+        *
+        * password: https://www.w3schools.com/tags/att_input_type_password.asp
+        * textarea : https://www.w3schools.com/tags/tag_textarea.asp
+        * text: https://www.w3schools.com/tags/tag_input.asp
+        * checkbox: https://www.w3schools.com/tags/att_input_type_checkbox.asp
+        *
+        * Your task is to:
+        * 1. Iterate through the array, and create an element based on the type. 
+        * 2. The properites disabled, id, value and class will relate to that elements object
+        * and should appear in the html. For example, id : "my-text" should be <input type="text" id="my-text" />
+        * 3. As each form element is created, a button should be created. When that button is clicked, is should update
+        * the approrpiate object in the data array. For example, value : "A line of text" at array index 0 should be updated
+        * when the button for the text input is clicked
+        */
+        var data = [
+            {
+                type: "text",
+                disabled : false,
+                id : "my-text",
+                value : "A line of text",
+                class : "form-control",
+                maxLength: 255
+            },
+            {
+                type: "password",
+                disabled : false,
+                id : "my-passwod",
+                value : "",
+                class : "form-control"
+            },
+            {
+                type: "textarea",
+                disabled : false,
+                id : "my-textarea",
+                value : "Hello World, How Are You?",
+                style: "background-color: blue;",
+                class : "form-control"
+            },
+            {
+                type: "checkbox",
+                disabled : true,
+                id : "my-checkbox",
+                value : "1",
+                class : ""
+            },
+        ];
+
+        var container = document.getElementById("container");
+
+        var createHtmlFormObject = function(dataObject) {
+            
+            var input = document.createElement("INPUT");
+            if (dataObject.type != null) {    
+                input.setAttribute("type", dataObject.type);
+            }
+            if (dataObject.disabled == true) {
+                input.setAttribute("disabled", dataObject.disabled);
+            }
+            if (dataObject.id != null) {
+                input.setAttribute("id", dataObject.id);
+            }
+            if (dataObject.value != null) {
+                input.setAttribute("value", dataObject.value);
+            }
+            if (dataObject.style != null) {
+                input.setAttribute("style", dataObject.style);
+            }
+            if (dataObject.class != null) {
+                input.setAttribute("class", dataObject.class);
+            }
+            
+            container.appendChild(input);
+
+        }
+
+        data.forEach(createHtmlFormObject);
+    
+    </script>
+    
+</html>
