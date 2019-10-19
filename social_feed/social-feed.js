@@ -52,6 +52,10 @@ var postToFeed = function () {
     }
 
     if (newPost.innerHTML != "") {
+        var deleteBtn = document.createElement("button");
+        deleteBtn.innerHTML = "Delete";
+        deleteBtn.classList.add("btn", "btn-secondary");
+        newPost.appendChild(deleteBtn);
         feedContainer.prepend(newPost);
     }
 
