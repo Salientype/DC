@@ -1,6 +1,8 @@
-var init = function () {
+// feed Data
+var postToFeed = function () {
 
-    // save form elements into vars
+    console.log("hi");
+
     var mainContainer = document.getElementById("main-container");
 
     var editPostContainer = document.getElementById("edit-post-container");
@@ -10,64 +12,52 @@ var init = function () {
     var editPostTitle = document.getElementById("edit-post-title");
     var editPostText = document.getElementById("edit-post-text");
     var editPostImgUrl = document.getElementById("edit-post-img-url");
-    var submitBtn = document.getElementById("submit-btn");
 
     var feedContainer = document.getElementById("feed-container");
 
-    // feed Data
-    var postToFeed = function () {
+    var newPost = document.createElement("div");
 
-        var feedObj = {
-            user: editPostUser.nodeValue,
-            title: editPostTitle.nodeValue,
-            text: editPostText.nodeValue,
-            imgUrl: editPostImgUrl.nodeValue
-        };
+    var feedObj = {
 
-        var newPost = document.createElement("div");
-        
-        Object.keys(feedObj).forEach(function(key,index) {
-            
-            if ( key == user ) {
-                
-                var user  = document.createElement("span");
-                newPost.appendChild(user);
-                user.innerHTML = feedObj.key;
+        user: editPostUser.value,
+        title: editPostTitle.value,
+        text: editPostText.value,
+        imgUrl: editPostImgUrl.value
 
-            } else if ( key == title ) {
-                
-                var title  = document.createElement("h2");
-                newPost.appendChild(title);
-                title.innerHTML = feedObj.key;
+    };
 
-            } else if ( key == text ) {
-                
-                var text = document.createElement("p");
-                newPost.appendChild(text);
-                text.innerHTML = feedObj.key;
+    console.log(feedObj);
 
-            } else if ( key == imgUrl ) {
-                
-                var image = document.createElement("img");
-                newPost.appendChild(image);
-                image.setAttribute("src", feedObj.key);
+    Object.keys(feedObj).forEach(function (key) {
 
-            }
+        console.log(key);
 
-        });
+        if (key == user) {
 
-        feedContainer.prepend(newPost);
-    }
+            console.log(key);
+            var user = document.createElement("span");
+            newPost.appendChild(user);
+            user.innerHTML = feedObj.key;
 
-    submitBtn.addEventListener("click", postToFeed);
+        } else if (key == title) {
+
+            console.log(key);
+            var title = document.createElement("h2");
+            newPost.appendChild(title);
+            title.innerHTML = feedObj.key;
+
+        } else if (key == text) {
+
+            console.log(key);
+            var text = document.createElement("p");
+            newPost.appendChild(text);
+            text.innerHTML = feedObj.key;
+
+        }
+
+    });
+
+    feedContainer.prepend(newPost);
 
 }
-
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-
-    init();
-
-});
 

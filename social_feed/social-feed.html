@@ -17,7 +17,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="social-feed.js"></script>
     <title>Social Feed</title>
 </head>
 
@@ -39,7 +38,7 @@
                 <label class="form-label" for="edit-post-img-url">Enter your Post Image URL (optional)</label>
                 <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url"
                     placeholder="http://www.example.com/image.jpg" />
-                <button id="submit-btn" name="submit-btn" class="btn btn-primary" type="submit">Submit</button>
+                <button id="submit-btn" name="submit-btn" class="btn btn-primary" type="submit" onclick="postToFeed();">Submit</button>
             </form>
         </div>
 
@@ -50,5 +49,7 @@
     </div>
 
 </body>
+
+<script src="social-feed.js"></script>
 
 </html>
