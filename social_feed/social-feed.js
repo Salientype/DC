@@ -13,6 +13,11 @@ var init = function() {
 
     var feedContainer = document.getElementById("feed-container");
 
+    // feed Data
+    var feedData = [];
+
+    
+
 }
 
 
