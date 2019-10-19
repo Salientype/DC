@@ -1,8 +1,6 @@
 // feed Data
 var postToFeed = function () {
 
-    console.log("hi");
-
     var mainContainer = document.getElementById("main-container");
 
     var editPostContainer = document.getElementById("edit-post-container");
@@ -24,40 +22,38 @@ var postToFeed = function () {
         text: editPostText.value,
         imgUrl: editPostImgUrl.value
 
-    };
+    };    
 
-    console.log(feedObj);
+    if (feedObj.user != "") {
 
-    Object.keys(feedObj).forEach(function (key) {
+        console.log(feedObj.user);
+        var user = document.createElement("span");
+        newPost.appendChild(user);
+        user.innerHTML = feedObj.user;
 
-        console.log(key);
+    }
 
-        if (key == user) {
+    if (feedObj.title != "") {
 
-            console.log(key);
-            var user = document.createElement("span");
-            newPost.appendChild(user);
-            user.innerHTML = feedObj.key;
+        console.log(feedObj.title);
+        var title = document.createElement("h2");
+        newPost.appendChild(title);
+        title.innerHTML = feedObj.title;
 
-        } else if (key == title) {
+    } 
+    
+    if (feedObj.text != "") {
 
-            console.log(key);
-            var title = document.createElement("h2");
-            newPost.appendChild(title);
-            title.innerHTML = feedObj.key;
+        console.log(feedObj.text);
+        var text = document.createElement("p");
+        newPost.appendChild(text);
+        text.innerHTML = feedObj.text;
 
-        } else if (key == text) {
+    }
 
-            console.log(key);
-            var text = document.createElement("p");
-            newPost.appendChild(text);
-            text.innerHTML = feedObj.key;
-
-        }
-
-    });
-
-    feedContainer.prepend(newPost);
+    if (newPost.innerHTML != "") {
+        feedContainer.prepend(newPost);
+    }
 
 }
 

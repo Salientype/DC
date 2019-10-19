@@ -24,22 +24,20 @@
 
     <div id="main-container" class="container">
 
-        <div id="edit-post-container">
-            <form action="" id="post-form" name="post-form" class="d-flex flex-column">
-                <label class="form-label" for="edit-post-user">Enter a User Name</label>
-                <input type="text" id="edit-post-user" name="post-user" class="form-control" minlength="3" maxlength="8"
-                    size="10" required />
-                <label class="form-label" for="edit-post-title">Enter your Post Title</label>
-                <input type="text" id="edit-post-title" name="post-title" class="form-control" minlength="4" maxlength="12"
-                    size="14" required />
-                <label class="form-label" for="edit-post-text">Enter your Post Text</label>
-                <textarea id="edit-post-text" name="post-text" class="form-control" rows="5" cols="30"
-                    placeholder="Enter post text here..." required></textarea>
-                <label class="form-label" for="edit-post-img-url">Enter your Post Image URL (optional)</label>
-                <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url"
-                    placeholder="http://www.example.com/image.jpg" />
-                <button id="submit-btn" name="submit-btn" class="btn btn-primary" type="submit" onclick="postToFeed();">Submit</button>
-            </form>
+        <div id="edit-post-container d-flex flex-column">
+            <label class="form-label" for="edit-post-user">Enter a User Name</label>
+            <input type="text" id="edit-post-user" name="post-user" class="form-control" minlength="3" maxlength="8"
+                size="10" required />
+            <label class="form-label" for="edit-post-title">Enter your Post Title</label>
+            <input type="text" id="edit-post-title" name="post-title" class="form-control" minlength="4" maxlength="12"
+                size="14" required />
+            <label class="form-label" for="edit-post-text">Enter your Post Text</label>
+            <textarea id="edit-post-text" name="post-text" class="form-control" rows="5" cols="30"
+                placeholder="Enter post text here..." required></textarea>
+            <label class="form-label" for="edit-post-img-url">Enter your Post Image URL (optional)</label>
+            <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url"
+                placeholder="http://www.example.com/image.jpg" />
+            <button id="submit-btn" name="submit-btn" class="btn btn-primary" onclick="postToFeed();">Submit</button>
         </div>
 
         <div id="feed-container">
