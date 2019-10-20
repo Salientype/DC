@@ -39,6 +39,8 @@ var validateInputs = function () {
 
         inputArray.forEach(function (element) {
 
+            // https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
+            
             if (element.validity.valueMissing == true || 
                     element.validity.badInput == true || 
              element.validity.patternMismatch == true || 
@@ -52,14 +54,12 @@ var validateInputs = function () {
     
         });
 
-
         if (valid == false) {
 
             alert("Please check your Inputs!");
-            
+
         }
 
-    
         if (editPostImgUrl.value != "" && checkImgUrl(editPostImgUrl.value) == false) {
                 
             alert("Please enter a valid URL to an image!");
