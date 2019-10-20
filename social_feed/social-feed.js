@@ -51,6 +51,14 @@ var validateInputs = function () {
             }
     
         });
+
+
+        if (valid == false) {
+
+            alert("Please check your Inputs!");
+            
+        }
+
     
         if (editPostImgUrl.value != "" && checkImgUrl(editPostImgUrl.value) == false) {
                 
@@ -72,65 +80,67 @@ var validateInputs = function () {
 
 var postToFeed = function () {
 
-    console.log(validateInputs());
+    if (validateInputs() == true) {
 
-    var newPost = document.createElement("div");
+        var newPost = document.createElement("div");
 
-    var feedObj = {
+        var feedObj = {
 
-        user: editPostUser.value,
-        title: editPostTitle.value,
-        text: editPostText.value,
-        imgUrl: editPostImgUrl.value
+            user: editPostUser.value,
+            title: editPostTitle.value,
+            text: editPostText.value,
+            imgUrl: editPostImgUrl.value
 
-    };
+        };
 
-    if (feedObj.user != "") {
+        if (feedObj.user != "") {
 
-        console.log(feedObj.user);
-        var user = document.createElement("span");
-        newPost.appendChild(user);
-        user.innerHTML = feedObj.user;
+            console.log(feedObj.user);
+            var user = document.createElement("span");
+            newPost.appendChild(user);
+            user.innerHTML = feedObj.user;
 
-    }
+        }
 
-    if (feedObj.title != "") {
+        if (feedObj.title != "") {
 
-        console.log(feedObj.title);
-        var title = document.createElement("h2");
-        newPost.appendChild(title);
-        title.innerHTML = feedObj.title;
+            console.log(feedObj.title);
+            var title = document.createElement("h2");
+            newPost.appendChild(title);
+            title.innerHTML = feedObj.title;
 
-    }
+        }
 
-    if (feedObj.text != "") {
+        if (feedObj.text != "") {
 
-        console.log(feedObj.text);
-        var text = document.createElement("p");
-        newPost.appendChild(text);
-        text.innerHTML = feedObj.text;
+            console.log(feedObj.text);
+            var text = document.createElement("p");
+            newPost.appendChild(text);
+            text.innerHTML = feedObj.text;
 
-    }
-  
-    if (feedObj.imgUrl != "") {
+        }
+    
+        if (feedObj.imgUrl != "") {
 
-        // do some stuff
-        console.log("works");
+            // do some stuff
+            console.log("works");
 
-    }
+        }
 
-    if (newPost.childElementCount >= 3) {
+        if (newPost.childElementCount >= 3) {
 
-        var deleteBtn = document.createElement("button");
-        deleteBtn.innerHTML = "Delete";
-        deleteBtn.classList.add("btn", "btn-secondary");
-        newPost.appendChild(deleteBtn);
-        feedContainer.prepend(newPost);
+            var deleteBtn = document.createElement("button");
+            deleteBtn.innerHTML = "Delete";
+            deleteBtn.classList.add("btn", "btn-secondary");
+            newPost.appendChild(deleteBtn);
+            feedContainer.prepend(newPost);
 
-        editPostUser.value = "";
-        editPostTitle.value = "";
-        editPostText.value = "";
-        editPostImgUrl.value = "";
+            editPostUser.value = "";
+            editPostTitle.value = "";
+            editPostText.value = "";
+            editPostImgUrl.value = "";
+
+        }
 
     }
 
