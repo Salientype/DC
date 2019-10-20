@@ -10,6 +10,26 @@ var editPostImgUrl = document.getElementById("edit-post-img-url");
 
 var feedContainer = document.getElementById("feed-container");
 
+var checkImgUrl = function(string) {
+
+    var fileTypes = [".jpg", ".jpeg", ".png", ".gif", ".bmp"];
+
+    var valid = false;
+
+    fileTypes.forEach(function(ext) {
+
+        if (string.endsWith(ext) == true) {
+
+            valid = true;
+
+        }
+
+    });
+
+    return valid;
+
+}
+
 var postToFeed = function () {
 
     var newPost = document.createElement("div");
@@ -50,6 +70,14 @@ var postToFeed = function () {
 
     }
 
+    if (feedObj.imgUrl != "") {
+
+        if (checkImgUrl(feedObj.imgUrl) == true) {
+            console.log("works");
+        }
+
+    }
+    
     if (newPost.childElementCount >= 3) {
         
         var deleteBtn = document.createElement("button");
