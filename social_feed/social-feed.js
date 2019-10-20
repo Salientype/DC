@@ -50,7 +50,7 @@ var postToFeed = function () {
 
     }
 
-    if (newPost.childElementCount == 3) {
+    if (newPost.childElementCount >= 3) {
         
         var deleteBtn = document.createElement("button");
         deleteBtn.innerHTML = "Delete";
@@ -62,7 +62,7 @@ var postToFeed = function () {
         editPostTitle.value = "";
         editPostText.value = "";
         editPostImgUrl.value = "";
-        
+
     }
 
 }
