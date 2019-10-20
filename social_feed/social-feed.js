@@ -1,17 +1,16 @@
 // feed Data
+var mainContainer = document.getElementById("main-container");
+
+var editPostContainer = document.getElementById("edit-post-container");
+
+var editPostUser = document.getElementById("edit-post-user");
+var editPostTitle = document.getElementById("edit-post-title");
+var editPostText = document.getElementById("edit-post-text");
+var editPostImgUrl = document.getElementById("edit-post-img-url");
+
+var feedContainer = document.getElementById("feed-container");
+
 var postToFeed = function () {
-
-    var mainContainer = document.getElementById("main-container");
-
-    var editPostContainer = document.getElementById("edit-post-container");
-    var postForm = document.getElementById("post-form");
-
-    var editPostUser = document.getElementById("edit-post-user");
-    var editPostTitle = document.getElementById("edit-post-title");
-    var editPostText = document.getElementById("edit-post-text");
-    var editPostImgUrl = document.getElementById("edit-post-img-url");
-
-    var feedContainer = document.getElementById("feed-container");
 
     var newPost = document.createElement("div");
 
@@ -51,12 +50,19 @@ var postToFeed = function () {
 
     }
 
-    if (newPost.innerHTML != "") {
+    if (newPost.childElementCount == 3) {
+        
         var deleteBtn = document.createElement("button");
         deleteBtn.innerHTML = "Delete";
         deleteBtn.classList.add("btn", "btn-secondary");
         newPost.appendChild(deleteBtn);
         feedContainer.prepend(newPost);
+
+        editPostUser.value = "";
+        editPostTitle.value = "";
+        editPostText.value = "";
+        editPostImgUrl.value = "";
+        
     }
 
 }
