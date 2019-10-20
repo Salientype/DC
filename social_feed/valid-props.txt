@@ -14,7 +14,7 @@ stepMismatch: false
 ​
 tooLong: false
 ​
-tooShort: true
+tooShort: false
 ​
 typeMismatch: false
 ​

@@ -10,31 +10,6 @@ var editPostImgUrl = document.getElementById("edit-post-img-url");
 
 var feedContainer = document.getElementById("feed-container");
 
-var validateInputs = function () {
-    
-    var inputArray = [editPostUser, editPostTitle, editPostText, editPostImgUrl];
-
-    var valid = true;
-  
-    inputArray.forEach(function (element) {
-
-        if (element.validity.valueMissing == true || 
-                element.validity.badInput == true || 
-         element.validity.patternMismatch == true || 
-                element.validity.tooShort == true ||
-                 element.validity.tooLong == true ||
-            element.validity.typeMismatch == true) {
-
-            valid = false;
-
-        }
-
-    });
-
-    return valid;
-
-}
-
 var checkImgUrl = function (string) {
 
     var fileTypes = [".jpg", ".jpeg", ".png", ".gif", ".bmp"];
@@ -49,6 +24,47 @@ var checkImgUrl = function (string) {
         }
 
     });
+
+    return valid;
+
+}
+
+var validateInputs = function () {
+    
+    var inputArray = [editPostUser, editPostTitle, editPostText, editPostImgUrl];
+
+    var valid = true;
+  
+    if (editPostUser.value != "" && editPostTitle.value != "" && editPostText.value != "") {
+
+        inputArray.forEach(function (element) {
+
+            if (element.validity.valueMissing == true || 
+                    element.validity.badInput == true || 
+             element.validity.patternMismatch == true || 
+                    element.validity.tooShort == true ||
+                     element.validity.tooLong == true ||
+                element.validity.typeMismatch == true) {
+    
+                valid = false;
+    
+            }
+    
+        });
+    
+        if (editPostImgUrl.value != "" && checkImgUrl(editPostImgUrl.value) == false) {
+                
+            alert("Please enter a valid URL to an image!");
+            valid = false;
+    
+        }
+
+    } else {
+
+        alert("Required fields must be filled out");
+        valid = false;
+
+    }
 
     return valid;
 
@@ -95,8 +111,8 @@ var postToFeed = function () {
         text.innerHTML = feedObj.text;
 
     }
-
-    if (feedObj.imgUrl != "" && checkImgUrl(feedObj.imgUrl) == true) {
+  
+    if (feedObj.imgUrl != "") {
 
         // do some stuff
         console.log("works");
