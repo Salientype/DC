@@ -25,7 +25,7 @@ var validateInputs = function () {
                  element.validity.tooLong == true ||
             element.validity.typeMismatch == true) {
 
-                valid = false;
+            valid = false;
 
         }
 
@@ -38,7 +38,6 @@ var validateInputs = function () {
 var checkImgUrl = function (string) {
 
     var fileTypes = [".jpg", ".jpeg", ".png", ".gif", ".bmp"];
-
     var valid = false;
 
     fileTypes.forEach(function (ext) {
@@ -99,6 +98,7 @@ var postToFeed = function () {
 
     if (feedObj.imgUrl != "" && checkImgUrl(feedObj.imgUrl) == true) {
 
+        // do some stuff
         console.log("works");
 
     }
