@@ -1,0 +1,23 @@
+ValidityState
+​
+badInput: false
+​
+customError: false
+​
+patternMismatch: false
+​
+rangeOverflow: false
+​
+rangeUnderflow: false
+​
+stepMismatch: false
+​
+tooLong: false
+​
+tooShort: true
+​
+typeMismatch: false
+​
+valid: false
+​
+valueMissing: false

@@ -10,13 +10,38 @@ var editPostImgUrl = document.getElementById("edit-post-img-url");
 
 var feedContainer = document.getElementById("feed-container");
 
-var checkImgUrl = function(string) {
+var validateInputs = function () {
+    
+    var inputArray = [editPostUser, editPostTitle, editPostText, editPostImgUrl];
+
+    var valid = true;
+  
+    inputArray.forEach(function (element) {
+
+        if (element.validity.valueMissing == true || 
+                element.validity.badInput == true || 
+         element.validity.patternMismatch == true || 
+                element.validity.tooShort == true ||
+                 element.validity.tooLong == true ||
+            element.validity.typeMismatch == true) {
+
+                valid = false;
+
+        }
+
+    });
+
+    return valid;
+
+}
+
+var checkImgUrl = function (string) {
 
     var fileTypes = [".jpg", ".jpeg", ".png", ".gif", ".bmp"];
 
     var valid = false;
 
-    fileTypes.forEach(function(ext) {
+    fileTypes.forEach(function (ext) {
 
         if (string.endsWith(ext) == true) {
 
@@ -32,6 +57,8 @@ var checkImgUrl = function(string) {
 
 var postToFeed = function () {
 
+    console.log(validateInputs());
+
     var newPost = document.createElement("div");
 
     var feedObj = {
@@ -41,7 +68,7 @@ var postToFeed = function () {
         text: editPostText.value,
         imgUrl: editPostImgUrl.value
 
-    };    
+    };
 
     if (feedObj.user != "") {
 
@@ -59,8 +86,8 @@ var postToFeed = function () {
         newPost.appendChild(title);
         title.innerHTML = feedObj.title;
 
-    } 
-    
+    }
+
     if (feedObj.text != "") {
 
         console.log(feedObj.text);
@@ -70,16 +97,14 @@ var postToFeed = function () {
 
     }
 
-    if (feedObj.imgUrl != "") {
+    if (feedObj.imgUrl != "" && checkImgUrl(feedObj.imgUrl) == true) {
 
-        if (checkImgUrl(feedObj.imgUrl) == true) {
-            console.log("works");
-        }
+        console.log("works");
 
     }
-    
+
     if (newPost.childElementCount >= 3) {
-        
+
         var deleteBtn = document.createElement("button");
         deleteBtn.innerHTML = "Delete";
         deleteBtn.classList.add("btn", "btn-secondary");
