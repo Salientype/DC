@@ -25,19 +25,44 @@
     <div id="main-container" class="container">
         <h1>Craig's Facepalm</h1>
         <img src="https://media.giphy.com/media/XD4qHZpkyUFfq/giphy.gif" alt="Craig's Facepalm Logo">
+
         <div id="edit-post-container d-flex flex-column">
-            <label class="form-label" for="edit-post-user">Enter a User Name</label>
-            <input type="text" id="edit-post-user" name="post-user" class="form-control" minlength="3" maxlength="8"
-                size="10" required />
-            <label class="form-label" for="edit-post-title">Enter your Post Title</label>
-            <input type="text" id="edit-post-title" name="post-title" class="form-control" minlength="4" maxlength="12"
-                size="14" required />
-            <label class="form-label" for="edit-post-text">Enter your Post Text</label>
-            <textarea id="edit-post-text" name="post-text" class="form-control" rows="5" cols="30"
-                placeholder="Enter post text here..."></textarea>
-            <label class="form-label" for="edit-post-img-url">Enter your Post Image URL (optional)</label>
-            <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url"
-                placeholder="http://www.example.com/image.jpg" />
+            <div>
+                <label class="form-label" for="edit-post-user">Enter a User Name</label>
+                <input type="email" id="edit-post-user" name="post-user" class="form-control" minlength="3"
+                    maxlength="8" size="10" required />
+                <div class="invalid-feedback">
+                    Please enter a valid email.
+                </div>
+            </div>
+
+            <div>
+                <label class="form-label" for="edit-post-title">Enter your Post Title</label>
+                <input type="text" id="edit-post-title" name="post-title" class="form-control" minlength="4"
+                    maxlength="12" size="14" required />
+                <div class="invalid-feedback">
+                    Please enter a title.
+                </div>
+            </div>
+
+            <div>
+                <label class="form-label" for="edit-post-text">Enter your Post Text</label>
+                <textarea id="edit-post-text" name="post-text" class="form-control" rows="5" cols="30"
+                    placeholder="Enter post text here..."></textarea>
+                <div class="invalid-feedback">
+                    Your message is too long or too short.
+                </div>
+            </div>
+
+            <div>
+                <label class="form-label" for="edit-post-img-url">Enter your Post Image URL (optional)</label>
+                <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url"
+                    placeholder="http://www.example.com/image.jpg" />
+                <div class="invalid-feedback">
+                    Please enter a valid image URL. (supported types: .jpg, .jpeg, .png, .gif, .bmp)
+                </div>
+            </div>
+
             <button id="submit-btn" name="submit-btn" class="btn btn-primary" onclick="postToFeed();">Submit</button>
         </div>
 
