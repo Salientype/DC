@@ -21,16 +21,15 @@
 </head>
 
 <body>
-
     <div id="main-container" class="container">
         <h1>Craig's Facepalm</h1>
         <img src="https://media.giphy.com/media/XD4qHZpkyUFfq/giphy.gif" alt="Craig's Facepalm Logo">
 
-        <div id="edit-post-container d-flex flex-column">
+        <div id="edit-post-container" class="d-flex flex-column needs-validation" novalidate>
             <div>
                 <label class="form-label" for="edit-post-user">Enter a User Name</label>
                 <input type="email" id="edit-post-user" name="post-user" class="form-control" minlength="3"
-                    maxlength="8" size="10" required />
+                    maxlength="320" size="10" required />
                 <div class="invalid-feedback">
                     Please enter a valid email.
                 </div>
@@ -38,17 +37,17 @@
 
             <div>
                 <label class="form-label" for="edit-post-title">Enter your Post Title</label>
-                <input type="text" id="edit-post-title" name="post-title" class="form-control" minlength="4"
-                    maxlength="12" size="14" required />
+                <input type="text" id="edit-post-title" name="post-title" class="form-control" maxlength="20" size="20"
+                    required />
                 <div class="invalid-feedback">
-                    Please enter a title.
+                    You need a Title or your Title is too long.
                 </div>
             </div>
 
             <div>
                 <label class="form-label" for="edit-post-text">Enter your Post Text</label>
                 <textarea id="edit-post-text" name="post-text" class="form-control" rows="5" cols="30"
-                    placeholder="Enter post text here..."></textarea>
+                minlength="3" maxlength="500" placeholder="Enter post text here..."></textarea>
                 <div class="invalid-feedback">
                     Your message is too long or too short.
                 </div>
@@ -71,7 +70,6 @@
         </div>
 
     </div>
-
 </body>
 
 <script src="social-feed.js"></script>

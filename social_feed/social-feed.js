@@ -56,6 +56,7 @@ var validateInputs = function () {
 
         if (valid == false) {
 
+            editPostContainer.classList.add('was-validated');
             alert("Please check your Inputs!");
 
         }
