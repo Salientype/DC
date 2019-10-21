@@ -21,21 +21,36 @@
 </head>
 
 <body>
-    <div id="main-container" class="container">
-        <h1>Craig's Facepalm</h1>
-        <img src="https://media.giphy.com/media/XD4qHZpkyUFfq/giphy.gif" alt="Craig's Facepalm Logo">
+    <div id="main-container">
+        <header class="fixed-top">
+            <div class="navbar navbar-expand-md navbar-dark bg-dark text-light">
+                <div class="container">
+                    <h1 class="navbar-brand">Craig's Facepalm</h1>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerNav"
+                        aria-controls="header-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <nav class="collapse navbar-collapse justify-content-md-end" id="headerNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="#edit-post-container">Create Your Post</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#feed-container">Your Feed</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
 
-        <div id="edit-post-container" class="d-flex flex-column needs-validation" novalidate>
-            <div>
+        <div id="edit-post-container" class="container d-flex flex-column needs-validation respect-navbar" novalidate>
+            <div class="form-group">
                 <label class="form-label" for="edit-post-user">Enter your Email as your Username*</label>
                 <input type="email" id="edit-post-user" name="post-user" class="form-control" minlength="3"
-                    maxlength="320" size="10" required />
+                    maxlength="320" size="10" placeholder="name@example.com" required />
                 <div class="invalid-feedback">
                     Please enter a valid email.
                 </div>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label class="form-label" for="edit-post-title">Enter Title of your post*</label>
                 <input type="text" id="edit-post-title" name="post-title" class="form-control" maxlength="20" size="20"
                     required />
@@ -44,16 +59,16 @@
                 </div>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label class="form-label" for="edit-post-text">Enter the Text of your post (max 500 characters)</label>
-                <textarea id="edit-post-text" name="post-text" class="form-control" rows="5" cols="30"
-                minlength="3" maxlength="500" placeholder="Enter post text here..."></textarea>
+                <textarea id="edit-post-text" name="post-text" class="form-control" rows="5" cols="30" minlength="3"
+                    maxlength="500" placeholder="Enter post text here..."></textarea>
                 <div class="invalid-feedback">
                     Your message is too long or too short.
                 </div>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label class="form-label" for="edit-post-img-url">Enter your Post Image URL (optional)</label>
                 <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url"
                     placeholder="http://www.example.com/image.jpg" />
@@ -65,7 +80,7 @@
             <button id="submit-btn" name="submit-btn" class="btn btn-primary" onclick="postToFeed();">Submit</button>
         </div>
 
-        <div id="feed-container">
+        <div id="feed-container" class="container respect-navbar">
 
         </div>
 

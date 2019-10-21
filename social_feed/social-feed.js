@@ -146,6 +146,12 @@ var postToFeed = function () {
             editPostText.value = "";
             editPostImgUrl.value = "";
 
+
+            editPostContainer.classList.remove('was-validated');
+            // editPostContainer.classList.remove("needs-validation");
+            // editPostContainer.removeAttribute("novalidate");
+
+
         }
 
     }
