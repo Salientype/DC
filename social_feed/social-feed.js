@@ -30,28 +30,28 @@ var checkImgUrl = function (string) {
 }
 
 var validateInputs = function () {
-    
+
     var inputArray = [editPostUser, editPostTitle, editPostText, editPostImgUrl];
 
     var valid = true;
-  
+
     if (editPostUser.value != "" && editPostTitle.value != "" && (editPostText.value != "" || editPostImgUrl.value != "")) {
 
         inputArray.forEach(function (element) {
 
             // https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
-            
-            if (element.validity.valueMissing == true || 
-                    element.validity.badInput == true || 
-             element.validity.patternMismatch == true || 
-                    element.validity.tooShort == true ||
-                     element.validity.tooLong == true ||
+
+            if (element.validity.valueMissing == true ||
+                element.validity.badInput == true ||
+                element.validity.patternMismatch == true ||
+                element.validity.tooShort == true ||
+                element.validity.tooLong == true ||
                 element.validity.typeMismatch == true) {
-    
+
                 valid = false;
-    
+
             }
-    
+
         });
 
         if (valid == false) {
@@ -62,10 +62,10 @@ var validateInputs = function () {
         }
 
         if (editPostImgUrl.value != "" && checkImgUrl(editPostImgUrl.value) == false) {
-                
+
             alert("Please enter a valid URL to an image!");
             valid = false;
-    
+
         }
 
     } else {
@@ -120,14 +120,14 @@ var postToFeed = function () {
             text.innerHTML = feedObj.text;
 
         }
-    
+
         if (feedObj.imgUrl != "") {
 
             // do some stuff
             console.log(feedObj.imgUrl);
             var image = document.createElement("img");
             newPost.appendChild(image);
-            image.setAttribute("src", feedObj.imgUrl );
+            image.setAttribute("src", feedObj.imgUrl);
 
         }
 
@@ -136,6 +136,8 @@ var postToFeed = function () {
             var deleteBtn = document.createElement("button");
             deleteBtn.innerHTML = "Delete";
             deleteBtn.classList.add("btn", "btn-secondary");
+            deleteBtn.setAttribute("onclick", "deletePost(this.parentElement);");
+
             newPost.appendChild(deleteBtn);
             feedContainer.prepend(newPost);
 
@@ -147,6 +149,12 @@ var postToFeed = function () {
         }
 
     }
+
+}
+
+var deletePost = function (post) {
+
+    feedContainer.removeChild(post);
 
 }
 
