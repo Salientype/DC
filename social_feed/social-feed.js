@@ -35,7 +35,7 @@ var validateInputs = function () {
 
     var valid = true;
   
-    if (editPostUser.value != "" && editPostTitle.value != "" && editPostText.value != "") {
+    if (editPostUser.value != "" && editPostTitle.value != "" && (editPostText.value != "" || editPostImgUrl.value != "")) {
 
         inputArray.forEach(function (element) {
 
@@ -123,7 +123,10 @@ var postToFeed = function () {
         if (feedObj.imgUrl != "") {
 
             // do some stuff
-            console.log("works");
+            console.log(feedObj.imgUrl);
+            var image = document.createElement("img");
+            newPost.appendChild(image);
+            image.setAttribute("src", feedObj.imgUrl );
 
         }
 
