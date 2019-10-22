@@ -65,16 +65,18 @@
                 <div class="form-group col">
                     <label class="form-label" for="edit-post-title">Enter Title of your post*</label>
                     <input type="text" id="edit-post-title" name="post-title" class="form-control" maxlength="320"
-                        size="20" required />
+                        required />
                     <div class="invalid-feedback">
                         You need a Title or your Title is too long.
                     </div>
                 </div>
             </div>
 
+            <h4>Please Enter Text (and/or) a link to an Image.</h4>
+
             <div class="form-row">
                 <div class="form-group col">
-                    <label class="form-label" for="edit-post-text">Enter the Text of your post (max 500
+                    <label class="form-label" for="edit-post-text">Enter the Text of your post (max 5000
                         characters)</label>
                     <textarea id="edit-post-text" name="post-text" class="form-control" rows="5" cols="30" minlength="3"
                         maxlength="5000" placeholder="Enter post text here..."></textarea>
@@ -87,7 +89,8 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label class="form-label" for="edit-post-img-url">Enter your Post Image URL (optional)</label>
-                    <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url" pattern=".+\.(([gG][iI][fF])|([jJ][pP][gG])|([jJ][pP][eE][gG])|([pP][nN][gG])|([bB][mM][pP]))"
+                    <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url"
+                        pattern=".+\.(([gG][iI][fF])|([jJ][pP][gG])|([jJ][pP][eE][gG])|([pP][nN][gG])|([bB][mM][pP]))"
                         placeholder="http://www.example.com/image.jpg" />
                     <div class="invalid-feedback">
                         Please enter a valid image URL. (supported types: .jpg, .jpeg, .png, .gif, .bmp)
