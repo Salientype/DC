@@ -84,12 +84,13 @@ var wrapParagraphs = function (string) {
 
     var paraContainer = [];
 
-    var paraArray = string.split(".\n");
+    var paraArray = string.split("\n");
 
     paraArray.forEach(function (paragraph) {
 
-        paragraph = paragraph.concat("<p>", paragraph, "</p>");
-        paraContainer.push(paragraph);
+        var paragraphHtml = "";
+        paragraphHtml = paragraphHtml.concat("<p>", paragraph, "</p>");
+        paraContainer.push(paragraphHtml);
 
     });
 
