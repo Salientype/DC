@@ -83,21 +83,11 @@ var validateInputs = function () {
 }
 
 // find paragraphs and wrap each one in a P tag
-var wrapParagraphs = function (string) {
-
-    var paraContainer = [];
+var findParagraphs = function (string) {
 
     var paraArray = string.split("\n");
 
-    paraArray.forEach(function (paragraph) {
-
-        // var paragraphHtml = "";
-        // paragraphHtml = paragraphHtml.concat("<p>", paragraph, "</p>");
-        paraContainer.push(paragraph);
-
-    });
-
-    return paraContainer;
+    return paraArray;
 
 }
 
@@ -109,6 +99,7 @@ var postToFeed = function () {
 
         var feedObj = {
 
+            name: editPostName.value,
             user: editPostUser.value,
             title: editPostTitle.value,
             text: editPostText.value,
@@ -116,31 +107,35 @@ var postToFeed = function () {
 
         };
 
+        if (feedObj.name != "") {
+
+            var name = document.createElement("h5");
+            name.innerHTML = feedObj.name;
+            newPost.appendChild(name);
+
+        }
+        
         if (feedObj.user != "") {
 
-            console.log(feedObj.user);
             var user = document.createElement("span");
-            newPost.appendChild(user);
             user.innerHTML = feedObj.user;
+            newPost.appendChild(user);
 
         }
 
         if (feedObj.title != "") {
 
-            console.log(feedObj.title);
-            var title = document.createElement("h2");
-            newPost.appendChild(title);
+            var title = document.createElement("h3");
             title.innerHTML = feedObj.title;
+            newPost.appendChild(title);
 
         }
 
         if (feedObj.text != "") {
 
-            // console.log(feedObj.text);
             var textContainer = document.createElement("div");
             
-            // console.log(wrapParagraphs(editPostText.value));
-            var paraArray = wrapParagraphs(feedObj.text);
+            var paraArray = findParagraphs(feedObj.text);
 
             paraArray.forEach(function (paragraph) {
                 
@@ -156,8 +151,6 @@ var postToFeed = function () {
 
         if (feedObj.imgUrl != "") {
 
-            // do some stuff
-            console.log(feedObj.imgUrl);
             var image = document.createElement("img");
             newPost.appendChild(image);
             image.setAttribute("src", feedObj.imgUrl);
@@ -174,6 +167,7 @@ var postToFeed = function () {
             newPost.appendChild(deleteBtn);
             feedContainer.prepend(newPost);
 
+            editPostName.value = "";
             editPostUser.value = "";
             editPostTitle.value = "";
             editPostText.value = "";
@@ -181,9 +175,6 @@ var postToFeed = function () {
 
 
             editPostContainer.classList.remove('was-validated');
-            // editPostContainer.classList.remove("needs-validation");
-            // editPostContainer.removeAttribute("novalidate");
-
 
         }
 
