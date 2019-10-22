@@ -1,4 +1,4 @@
-// feed Data
+// Variables for Page Elements
 var mainContainer = document.getElementById("main-container");
 
 var editPostContainer = document.getElementById("edit-post-container");
@@ -9,25 +9,6 @@ var editPostText = document.getElementById("edit-post-text");
 var editPostImgUrl = document.getElementById("edit-post-img-url");
 
 var feedContainer = document.getElementById("feed-container");
-
-var checkImgUrl = function (string) {
-
-    var fileTypes = [".jpg", ".jpeg", ".png", ".gif", ".bmp"];
-    var valid = false;
-
-    fileTypes.forEach(function (ext) {
-
-        if (string.endsWith(ext) == true) {
-
-            valid = true;
-
-        }
-
-    });
-
-    return valid;
-
-}
 
 var validateInputs = function () {
 
@@ -62,15 +43,6 @@ var validateInputs = function () {
 
         }
 
-        /*
-        if (editPostImgUrl.value != "" && checkImgUrl(editPostImgUrl.value) == false) {
-
-            alert("Please enter a valid URL to an image!");
-            valid = false;
-
-        }
-        */
-
     } else {
 
         alert("Required fields must be filled out");
@@ -82,7 +54,6 @@ var validateInputs = function () {
 
 }
 
-// find paragraphs and wrap each one in a P tag
 var findParagraphs = function (string) {
 
     var paraArray = string.split("\n");
@@ -114,7 +85,7 @@ var postToFeed = function () {
             newPost.appendChild(name);
 
         }
-        
+
         if (feedObj.user != "") {
 
             var user = document.createElement("span");
@@ -134,11 +105,11 @@ var postToFeed = function () {
         if (feedObj.text != "") {
 
             var textContainer = document.createElement("div");
-            
+
             var paraArray = findParagraphs(feedObj.text);
 
             paraArray.forEach(function (paragraph) {
-                
+
                 var paragraphHtml = document.createElement("p");
                 paragraphHtml.innerHTML = paragraph;
                 textContainer.appendChild(paragraphHtml);
