@@ -23,12 +23,7 @@ var validateInputs = function () {
             // https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
             // https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
 
-            if (element.validity.valueMissing == true ||
-                element.validity.badInput == true ||
-                element.validity.patternMismatch == true ||
-                element.validity.tooShort == true ||
-                element.validity.tooLong == true ||
-                element.validity.typeMismatch == true) {
+            if (element.validity.valid == false) {
 
                 valid = false;
 
