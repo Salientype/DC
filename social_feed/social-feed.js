@@ -88,9 +88,9 @@ var wrapParagraphs = function (string) {
 
     paraArray.forEach(function (paragraph) {
 
-        var paragraphHtml = "";
-        paragraphHtml = paragraphHtml.concat("<p>", paragraph, "</p>");
-        paraContainer.push(paragraphHtml);
+        // var paragraphHtml = "";
+        // paragraphHtml = paragraphHtml.concat("<p>", paragraph, "</p>");
+        paraContainer.push(paragraph);
 
     });
 
@@ -134,10 +134,20 @@ var postToFeed = function () {
         if (feedObj.text != "") {
 
             // console.log(feedObj.text);
-            var text = document.createElement("div");
-            console.log(wrapParagraphs(editPostText.value));
-            newPost.appendChild(text);
-            text.innerHTML = feedObj.text;
+            var textContainer = document.createElement("div");
+            
+            // console.log(wrapParagraphs(editPostText.value));
+            var paraArray = wrapParagraphs(feedObj.text);
+
+            paraArray.forEach(function (paragraph) {
+                
+                var paragraphHtml = document.createElement("p");
+                paragraphHtml.innerHTML = paragraph;
+                textContainer.appendChild(paragraphHtml);
+
+            });
+
+            newPost.appendChild(textContainer);
 
         }
 
