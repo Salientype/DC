@@ -110,12 +110,12 @@ var postToFeed = function () {
             paraArray.forEach(function (paragraph) {
 
                 var paragraphHtml = document.createElement("p");
-                paragraphHtml.classList.add("card-text");
                 paragraphHtml.innerHTML = paragraph;
                 textContainer.appendChild(paragraphHtml);
 
             });
 
+            textContainer.classList.add("card-text");
             newPost.appendChild(textContainer);
 
         }
@@ -123,7 +123,7 @@ var postToFeed = function () {
         if (feedObj.imgUrl != "") {
 
             var image = document.createElement("img");
-            image.classList.add("card-img-bottom");
+            image.classList.add("card-img-bottom", "mb-4");
             newPost.appendChild(image);
             image.setAttribute("src", feedObj.imgUrl);
 
@@ -139,8 +139,10 @@ var postToFeed = function () {
             newPost.appendChild(deleteBtn);
 
             // Add Bootstrap classes
-            postCard.classList.add("card", "col-md-7");
+            postCard.classList.add("card", "col-md-7", "mt-4", "mb-4");
             newPost.classList.add("card-body");
+            
+            // Make card and add to container 
             postCard.appendChild(newPost);
             feedContainer.prepend(postCard);
 

@@ -2,6 +2,10 @@ header {
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
-.respect-navbar {
-    margin-top: 84px;
+#edit-post-container.respect-navbar {
+    margin-top: 86px;
+}
+
+#feed-container.respect-navbar {
+    margin-top: 0;
 }
