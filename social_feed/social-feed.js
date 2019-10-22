@@ -2,7 +2,7 @@
 var mainContainer = document.getElementById("main-container");
 
 var editPostContainer = document.getElementById("edit-post-container");
-
+var editPostName = document.getElementById("edit-post-name");
 var editPostUser = document.getElementById("edit-post-user");
 var editPostTitle = document.getElementById("edit-post-title");
 var editPostText = document.getElementById("edit-post-text");
@@ -31,14 +31,15 @@ var checkImgUrl = function (string) {
 
 var validateInputs = function () {
 
-    var inputArray = [editPostUser, editPostTitle, editPostText, editPostImgUrl];
+    var inputArray = [editPostName, editPostUser, editPostTitle, editPostText, editPostImgUrl];
 
     var valid = true;
 
-    if (editPostUser.value != "" && editPostTitle.value != "" && (editPostText.value != "" || editPostImgUrl.value != "")) {
+    if (editPostName.value != "" && editPostUser.value != "" && editPostTitle.value != "" && (editPostText.value != "" || editPostImgUrl.value != "")) {
 
         inputArray.forEach(function (element) {
 
+            // https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
             // https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
 
             if (element.validity.valueMissing == true ||
