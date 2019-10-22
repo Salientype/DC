@@ -87,7 +87,7 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label class="form-label" for="edit-post-img-url">Enter your Post Image URL (optional)</label>
-                    <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url"
+                    <input id="edit-post-img-url" name="post-img-url" class="form-control" type="url" pattern=".+\.(([gG][iI][fF])|([jJ][pP][gG])|([jJ][pP][eE][gG])|([pP][nN][gG])|([bB][mM][pP]))"
                         placeholder="http://www.example.com/image.jpg" />
                     <div class="invalid-feedback">
                         Please enter a valid image URL. (supported types: .jpg, .jpeg, .png, .gif, .bmp)

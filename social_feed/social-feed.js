@@ -62,12 +62,14 @@ var validateInputs = function () {
 
         }
 
+        /*
         if (editPostImgUrl.value != "" && checkImgUrl(editPostImgUrl.value) == false) {
 
             alert("Please enter a valid URL to an image!");
             valid = false;
 
         }
+        */
 
     } else {
 
