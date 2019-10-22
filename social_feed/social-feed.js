@@ -62,6 +62,7 @@ var postToFeed = function () {
     if (validateInputs() == true) {
 
         var newPost = document.createElement("div");
+        var postCard = document.createElement("div");
 
         var feedObj = {
 
@@ -73,9 +74,19 @@ var postToFeed = function () {
 
         };
 
+        if (feedObj.title != "") {
+
+            var title = document.createElement("h3");
+            title.classList.add("card-title");
+            title.innerHTML = feedObj.title;
+            newPost.appendChild(title);
+
+        }
+        
         if (feedObj.name != "") {
 
             var name = document.createElement("h5");
+            name.classList.add("card-subtitle");
             name.innerHTML = feedObj.name;
             newPost.appendChild(name);
 
@@ -84,16 +95,9 @@ var postToFeed = function () {
         if (feedObj.user != "") {
 
             var user = document.createElement("span");
+            user.classList.add("card-text", "text-muted");
             user.innerHTML = feedObj.user;
             newPost.appendChild(user);
-
-        }
-
-        if (feedObj.title != "") {
-
-            var title = document.createElement("h3");
-            title.innerHTML = feedObj.title;
-            newPost.appendChild(title);
 
         }
 
@@ -106,6 +110,7 @@ var postToFeed = function () {
             paraArray.forEach(function (paragraph) {
 
                 var paragraphHtml = document.createElement("p");
+                paragraphHtml.classList.add("card-text");
                 paragraphHtml.innerHTML = paragraph;
                 textContainer.appendChild(paragraphHtml);
 
@@ -118,20 +123,26 @@ var postToFeed = function () {
         if (feedObj.imgUrl != "") {
 
             var image = document.createElement("img");
+            image.classList.add("card-img-bottom");
             newPost.appendChild(image);
             image.setAttribute("src", feedObj.imgUrl);
 
         }
 
-        if (newPost.childElementCount >= 3) {
+        if (newPost.childElementCount >= 4) {
 
             var deleteBtn = document.createElement("button");
             deleteBtn.innerHTML = "Delete";
             deleteBtn.classList.add("btn", "btn-secondary");
-            deleteBtn.setAttribute("onclick", "deletePost(this.parentElement);");
+            deleteBtn.setAttribute("onclick", "deletePost(this.parentElement.parentElement);");
 
             newPost.appendChild(deleteBtn);
-            feedContainer.prepend(newPost);
+
+            // Add Bootstrap classes
+            postCard.classList.add("card", "col-md-7");
+            newPost.classList.add("card-body");
+            postCard.appendChild(newPost);
+            feedContainer.prepend(postCard);
 
             editPostName.value = "";
             editPostUser.value = "";
