@@ -79,6 +79,24 @@ var validateInputs = function () {
 
 }
 
+// find paragraphs and wrap each one in a P tag
+var wrapParagraphs = function (string) {
+
+    var paraContainer = [];
+
+    var paraArray = string.split(".\n");
+
+    paraArray.forEach(function (paragraph) {
+
+        paragraph = paragraph.concat("<p>", paragraph, "</p>");
+        paraContainer.push(paragraph);
+
+    });
+
+    return paraContainer;
+
+}
+
 var postToFeed = function () {
 
     if (validateInputs() == true) {
@@ -114,8 +132,9 @@ var postToFeed = function () {
 
         if (feedObj.text != "") {
 
-            console.log(feedObj.text);
-            var text = document.createElement("p");
+            // console.log(feedObj.text);
+            var text = document.createElement("div");
+            console.log(wrapParagraphs(editPostText.value));
             newPost.appendChild(text);
             text.innerHTML = feedObj.text;
 
